@@ -1,0 +1,21 @@
+programa monitoreo_clima;
+
+entero distancia;
+decimal viento;
+cadena zona;
+booleano alerta_activa;
+
+distancia = 120;
+viento = 85.5;
+zona = "NORTE";
+alerta_activa = verdadero;
+
+si viento > 70 entonces
+    alerta("Tormenta detectada en " + zona);
+fin
+
+mientras distancia > 0 hacer
+    distancia = distancia - 30;
+fin
+
+reporte("Proceso finalizado");

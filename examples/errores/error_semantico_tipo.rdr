@@ -1,0 +1,7 @@
+programa error_semantico_tipo;
+
+entero distancia;
+// Error: no se puede asignar cadena a entero
+distancia = "ciento veinte";
+
+reporte(distancia);

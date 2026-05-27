@@ -1,0 +1,7 @@
+programa error_lexico_cadena;
+
+// Cadena sin cerrar: falta la comilla de cierre
+cadena mensaje;
+mensaje = "Esta cadena nunca se cierra;
+
+reporte(mensaje);

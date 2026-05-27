@@ -1,0 +1,9 @@
+programa prueba;
+
+entero distancia;
+cadena mensaje;
+
+distancia = 120;
+mensaje = "Proceso finalizado";
+
+reporte(mensaje);

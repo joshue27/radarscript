@@ -1,0 +1,13 @@
+programa prueba_condicional;
+
+decimal viento;
+cadena zona;
+
+viento = 85.5;
+zona = "NORTE";
+
+si viento > 70 entonces
+    alerta("Tormenta detectada en " + zona);
+fin
+
+reporte("Proceso finalizado");

@@ -1,0 +1,7 @@
+programa error_lexico;
+
+entero distancia;
+distancia = 120;
+
+// Simbolo invalido: @ no pertenece al alfabeto de RadarScript
+reporte(distancia @ 1);

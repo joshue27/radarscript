@@ -1,0 +1,8 @@
+programa error_variable_duplicada;
+
+entero distancia;
+decimal distancia;
+
+distancia = 120;
+
+reporte(distancia);

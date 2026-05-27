@@ -1,0 +1,10 @@
+programa prueba_mientras;
+
+entero distancia;
+distancia = 120;
+
+mientras distancia > 0 hacer
+    distancia = distancia - 30;
+fin
+
+reporte(distancia);

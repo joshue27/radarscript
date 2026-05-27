@@ -1,0 +1,14 @@
+programa prueba_expresiones;
+
+entero distancia;
+entero total;
+cadena zona;
+cadena mensaje;
+
+distancia = 120;
+total = distancia - 30 * 2;
+zona = "NORTE";
+mensaje = "Zona " + zona;
+
+reporte(total);
+reporte(mensaje);

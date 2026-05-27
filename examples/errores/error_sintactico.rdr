@@ -1,0 +1,6 @@
+programa error_sintactico;
+
+entero distancia
+distancia = 120;
+
+reporte(distancia);

@@ -1,0 +1,8 @@
+programa error_sintactico_entonces;
+
+entero distancia;
+distancia = 120;
+
+si distancia > 100
+    reporte(distancia);
+fin

@@ -1,0 +1,9 @@
+programa error_variable_no_declarada;
+
+entero distancia;
+distancia = 120;
+
+// Error: 'velocidad' no fue declarada
+velocidad = 80;
+
+reporte(distancia);

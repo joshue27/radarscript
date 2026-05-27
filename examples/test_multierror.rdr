@@ -1,0 +1,11 @@
+programa test_multierror;
+entero x;
+cadena msg;
+x = 42 + ;
+msg = "Hola";
+reporte(msg);
+alerta(x);
+entero x;
+entero y;
+y = "texto";
+reporte(alerta;

@@ -1,0 +1,529 @@
+programa red_monitoreo_nacional;
+
+// ============================================================
+// RED NACIONAL DE MONITOREO CLIMATICO
+// Simulacion de 12 estaciones meteorologicas con alertas
+// ============================================================
+
+// ---- CONSTANTES DE CONFIGURACION ----
+entero UMBRAL_TEMP_ALTA;
+entero UMBRAL_TEMP_BAJA;
+entero UMBRAL_VIENTO;
+entero UMBRAL_HUMEDAD;
+entero CICLOS;
+entero CONTADOR;
+
+UMBRAL_TEMP_ALTA = 35;
+UMBRAL_TEMP_BAJA = 5;
+UMBRAL_VIENTO = 60;
+UMBRAL_HUMEDAD = 90;
+CICLOS = 3;
+CONTADOR = 1;
+
+// ---- VARIABLES GLOBALES ----
+entero total_alertas;
+entero total_reportes;
+entero estaciones_procesadas;
+cadena resumen_global;
+booleano hay_emergencia;
+
+total_alertas = 0;
+total_reportes = 0;
+estaciones_procesadas = 0;
+resumen_global = "INICIO";
+hay_emergencia = falso;
+
+// ============================================================
+// ESTACION NORTE - COSTA
+// ============================================================
+entero n_temp;
+entero n_viento;
+entero n_humedad;
+entero n_presion;
+cadena n_nombre;
+booleano n_alerta;
+cadena n_mensaje;
+
+n_temp = 38;
+n_viento = 72;
+n_humedad = 65;
+n_presion = 1013;
+n_nombre = "COSTA_NORTE";
+n_alerta = falso;
+n_mensaje = " ";
+
+si n_temp > UMBRAL_TEMP_ALTA entonces
+    n_alerta = verdadero;
+    n_mensaje = "TEMPERATURA ALTA EN " + n_nombre;
+    alerta(n_mensaje);
+    total_alertas = total_alertas + 1;
+fin
+
+si n_viento > UMBRAL_VIENTO entonces
+    n_alerta = verdadero;
+    n_mensaje = "VIENTO FUERTE EN " + n_nombre;
+    alerta(n_mensaje);
+    total_alertas = total_alertas + 1;
+fin
+
+si n_alerta == verdadero entonces
+    hay_emergencia = verdadero;
+    reporte("ALERTA ACTIVA: " + n_nombre);
+fin
+
+estaciones_procesadas = estaciones_procesadas + 1;
+
+// ============================================================
+// ESTACION NORTE - SIERRA
+// ============================================================
+entero s_temp;
+entero s_viento;
+entero s_humedad;
+entero s_presion;
+cadena s_nombre;
+booleano s_alerta;
+cadena s_mensaje;
+
+s_temp = 22;
+s_viento = 45;
+s_humedad = 80;
+s_presion = 1020;
+s_nombre = "SIERRA_NORTE";
+s_alerta = falso;
+s_mensaje = " ";
+
+si s_temp < UMBRAL_TEMP_BAJA entonces
+    s_alerta = verdadero;
+    s_mensaje = "TEMPERATURA BAJA EN " + s_nombre;
+    alerta(s_mensaje);
+    total_alertas = total_alertas + 1;
+fin
+
+si s_viento > UMBRAL_VIENTO entonces
+    s_alerta = verdadero;
+    s_mensaje = "VIENTO FUERTE EN " + s_nombre;
+    alerta(s_mensaje);
+    total_alertas = total_alertas + 1;
+fin
+
+si s_humedad > UMBRAL_HUMEDAD entonces
+    s_alerta = verdadero;
+    reporte("HUMEDAD EXTREMA: " + s_nombre);
+fin
+
+si s_alerta == verdadero entonces
+    hay_emergencia = verdadero;
+    reporte("ALERTA ACTIVA: " + s_nombre);
+fin
+
+estaciones_procesadas = estaciones_procesadas + 1;
+
+// ============================================================
+// ESTACION CENTRO - CAPITAL
+// ============================================================
+entero c_temp;
+entero c_viento;
+entero c_humedad;
+entero c_presion;
+cadena c_nombre;
+booleano c_alerta;
+cadena c_mensaje;
+
+c_temp = 30;
+c_viento = 55;
+c_humedad = 70;
+c_presion = 1015;
+c_nombre = "CAPITAL";
+c_alerta = falso;
+c_mensaje = " ";
+
+si c_temp > UMBRAL_TEMP_ALTA entonces
+    c_alerta = verdadero;
+    c_mensaje = "TEMPERATURA ALTA EN " + c_nombre;
+    alerta(c_mensaje);
+    total_alertas = total_alertas + 1;
+fin
+
+si c_viento > UMBRAL_VIENTO entonces
+    c_alerta = verdadero;
+    c_mensaje = "VIENTO FUERTE EN " + c_nombre;
+    alerta(c_mensaje);
+    total_alertas = total_alertas + 1;
+fin
+
+si c_alerta == verdadero entonces
+    hay_emergencia = verdadero;
+    reporte("ALERTA ACTIVA: " + c_nombre);
+fin
+
+estaciones_procesadas = estaciones_procesadas + 1;
+
+// ============================================================
+// ESTACION CENTRO - MONTAÑA
+// ============================================================
+entero m_temp;
+entero m_viento;
+entero m_humedad;
+entero m_presion;
+cadena m_nombre;
+booleano m_alerta;
+cadena m_mensaje;
+
+m_temp = 12;
+m_viento = 80;
+m_humedad = 45;
+m_presion = 980;
+m_nombre = "MONTAÑA_CENTRO";
+m_alerta = falso;
+m_mensaje = " ";
+
+si m_temp < UMBRAL_TEMP_BAJA entonces
+    m_alerta = verdadero;
+    m_mensaje = "TEMPERATURA BAJA EN " + m_nombre;
+    alerta(m_mensaje);
+    total_alertas = total_alertas + 1;
+fin
+
+si m_viento > UMBRAL_VIENTO entonces
+    m_alerta = verdadero;
+    m_mensaje = "VIENTO EXTREMO EN " + m_nombre;
+    alerta(m_mensaje);
+    total_alertas = total_alertas + 1;
+fin
+
+si m_alerta == verdadero entonces
+    hay_emergencia = verdadero;
+    reporte("ALERTA ACTIVA: " + m_nombre);
+fin
+
+estaciones_procesadas = estaciones_procesadas + 1;
+
+// ============================================================
+// ESTACION SUR - PATAGONIA
+// ============================================================
+entero p_temp;
+entero p_viento;
+entero p_humedad;
+entero p_presion;
+cadena p_nombre;
+booleano p_alerta;
+cadena p_mensaje;
+
+p_temp = 2;
+p_viento = 95;
+p_humedad = 30;
+p_presion = 990;
+p_nombre = "PATAGONIA";
+p_alerta = falso;
+p_mensaje = " ";
+
+si p_temp < UMBRAL_TEMP_BAJA entonces
+    p_alerta = verdadero;
+    p_mensaje = "TEMPERATURA BAJA EN " + p_nombre;
+    alerta(p_mensaje);
+    total_alertas = total_alertas + 1;
+fin
+
+si p_viento > UMBRAL_VIENTO entonces
+    p_alerta = verdadero;
+    p_mensaje = "VIENTO EXTREMO EN " + p_nombre;
+    alerta(p_mensaje);
+    total_alertas = total_alertas + 1;
+fin
+
+si p_alerta == verdadero entonces
+    hay_emergencia = verdadero;
+    reporte("ALERTA ACTIVA: " + p_nombre);
+fin
+
+estaciones_procesadas = estaciones_procesadas + 1;
+
+// ============================================================
+// ESTACION SUR - ANTARTIDA
+// ============================================================
+entero a_temp;
+entero a_viento;
+entero a_humedad;
+entero a_presion;
+cadena a_nombre;
+booleano a_alerta;
+cadena a_mensaje;
+
+a_temp = 0;
+a_temp = a_temp - 5;
+a_viento = 110;
+a_humedad = 15;
+a_presion = 970;
+a_nombre = "ANTARTIDA";
+a_alerta = falso;
+a_mensaje = " ";
+
+si a_temp < UMBRAL_TEMP_BAJA entonces
+    a_alerta = verdadero;
+    a_mensaje = "TEMPERATURA BAJA EN " + a_nombre;
+    alerta(a_mensaje);
+    total_alertas = total_alertas + 1;
+fin
+
+si a_viento > UMBRAL_VIENTO entonces
+    a_alerta = verdadero;
+    a_mensaje = "VIENTO EXTREMO EN " + a_nombre;
+    alerta(a_mensaje);
+    total_alertas = total_alertas + 1;
+fin
+
+si a_alerta == verdadero entonces
+    hay_emergencia = verdadero;
+    reporte("ALERTA ACTIVA: " + a_nombre);
+fin
+
+estaciones_procesadas = estaciones_procesadas + 1;
+
+// ============================================================
+// ESTACION ESTE - LITORAL
+// ============================================================
+entero e_temp;
+entero e_viento;
+entero e_humedad;
+entero e_presion;
+cadena e_nombre;
+booleano e_alerta;
+cadena e_mensaje;
+
+e_temp = 33;
+e_viento = 40;
+e_humedad = 88;
+e_presion = 1008;
+e_nombre = "LITORAL";
+e_alerta = falso;
+e_mensaje = " ";
+
+si e_humedad > UMBRAL_HUMEDAD entonces
+    e_alerta = verdadero;
+    e_mensaje = "HUMEDAD ALTA EN " + e_nombre;
+    alerta(e_mensaje);
+    total_alertas = total_alertas + 1;
+fin
+
+si e_temp > UMBRAL_TEMP_ALTA entonces
+    e_alerta = verdadero;
+    reporte("TEMPERATURA ALTA: " + e_nombre);
+fin
+
+si e_alerta == verdadero entonces
+    hay_emergencia = verdadero;
+    reporte("ALERTA ACTIVA: " + e_nombre);
+fin
+
+estaciones_procesadas = estaciones_procesadas + 1;
+
+// ============================================================
+// ESTACION OESTE - CORDILLERA
+// ============================================================
+entero o_temp;
+entero o_viento;
+entero o_humedad;
+entero o_presion;
+cadena o_nombre;
+booleano o_alerta;
+cadena o_mensaje;
+
+o_temp = 10;
+o_temp = o_temp - 2;
+o_viento = 68;
+o_humedad = 55;
+o_presion = 940;
+o_nombre = "CORDILLERA";
+o_alerta = falso;
+o_mensaje = " ";
+
+si o_viento > UMBRAL_VIENTO entonces
+    o_alerta = verdadero;
+    o_mensaje = "VIENTO FUERTE EN " + o_nombre;
+    alerta(o_mensaje);
+    total_alertas = total_alertas + 1;
+fin
+
+si o_temp < UMBRAL_TEMP_BAJA entonces
+    o_alerta = verdadero;
+    reporte("TEMPERATURA BAJA: " + o_nombre);
+fin
+
+si o_alerta == verdadero entonces
+    hay_emergencia = verdadero;
+    reporte("ALERTA ACTIVA: " + o_nombre);
+fin
+
+estaciones_procesadas = estaciones_procesadas + 1;
+
+// ============================================================
+// ESTACION NORTE - DESIERTO
+// ============================================================
+entero d_temp;
+entero d_viento;
+entero d_humedad;
+entero d_presion;
+cadena d_nombre;
+booleano d_alerta;
+cadena d_mensaje;
+
+d_temp = 42;
+d_viento = 35;
+d_humedad = 12;
+d_presion = 1010;
+d_nombre = "DESIERTO";
+d_alerta = falso;
+d_mensaje = " ";
+
+si d_temp > UMBRAL_TEMP_ALTA entonces
+    d_alerta = verdadero;
+    d_mensaje = "TEMPERATURA EXTREMA EN " + d_nombre;
+    alerta(d_mensaje);
+    total_alertas = total_alertas + 1;
+fin
+
+si d_alerta == verdadero entonces
+    hay_emergencia = verdadero;
+    reporte("ALERTA ACTIVA: " + d_nombre);
+fin
+
+estaciones_procesadas = estaciones_procesadas + 1;
+
+// ============================================================
+// ESTACION CENTRO - VALLE
+// ============================================================
+entero v_temp;
+entero v_viento;
+entero v_humedad;
+entero v_presion;
+cadena v_nombre;
+booleano v_alerta;
+cadena v_mensaje;
+
+v_temp = 25;
+v_viento = 20;
+v_humedad = 75;
+v_presion = 1018;
+v_nombre = "VALLE_CENTRO";
+v_alerta = falso;
+v_mensaje = " ";
+
+si v_humedad > UMBRAL_HUMEDAD entonces
+    v_alerta = verdadero;
+    v_mensaje = "HUMEDAD ALTA EN " + v_nombre;
+    alerta(v_mensaje);
+    total_alertas = total_alertas + 1;
+fin
+
+si v_temp > UMBRAL_TEMP_ALTA entonces
+    v_alerta = verdadero;
+    reporte("TEMPERATURA ALTA: " + v_nombre);
+fin
+
+si v_alerta == verdadero entonces
+    hay_emergencia = verdadero;
+    reporte("ALERTA ACTIVA: " + v_nombre);
+fin
+
+estaciones_procesadas = estaciones_procesadas + 1;
+
+// ============================================================
+// ESTACION SUR - ISLAS
+// ============================================================
+entero i_temp;
+entero i_viento;
+entero i_humedad;
+entero i_presion;
+cadena i_nombre;
+booleano i_alerta;
+cadena i_mensaje;
+
+i_temp = 10;
+i_viento = 75;
+i_humedad = 92;
+i_presion = 1005;
+i_nombre = "ISLAS_SUR";
+i_alerta = falso;
+i_mensaje = " ";
+
+si i_humedad > UMBRAL_HUMEDAD entonces
+    i_alerta = verdadero;
+    i_mensaje = "HUMEDAD EXTREMA EN " + i_nombre;
+    alerta(i_mensaje);
+    total_alertas = total_alertas + 1;
+fin
+
+si i_viento > UMBRAL_VIENTO entonces
+    i_alerta = verdadero;
+    reporte("VIENTO FUERTE: " + i_nombre);
+fin
+
+si i_alerta == verdadero entonces
+    hay_emergencia = verdadero;
+    reporte("ALERTA ACTIVA: " + i_nombre);
+fin
+
+estaciones_procesadas = estaciones_procesadas + 1;
+
+// ============================================================
+// ESTACION ESTE - COSTA ATLANTICA
+// ============================================================
+entero t_temp;
+entero t_viento;
+entero t_humedad;
+entero t_presion;
+cadena t_nombre;
+booleano t_alerta;
+cadena t_mensaje;
+
+t_temp = 28;
+t_viento = 50;
+t_humedad = 82;
+t_presion = 1012;
+t_nombre = "COSTA_ATLANTICA";
+t_alerta = falso;
+t_mensaje = " ";
+
+si t_temp > UMBRAL_TEMP_ALTA entonces
+    t_alerta = verdadero;
+    t_mensaje = "TEMPERATURA ALTA EN " + t_nombre;
+    alerta(t_mensaje);
+    total_alertas = total_alertas + 1;
+fin
+
+si t_humedad > UMBRAL_HUMEDAD entonces
+    t_alerta = verdadero;
+    reporte("HUMEDAD ALTA: " + t_nombre);
+fin
+
+si t_alerta == verdadero entonces
+    hay_emergencia = verdadero;
+    reporte("ALERTA ACTIVA: " + t_nombre);
+fin
+
+estaciones_procesadas = estaciones_procesadas + 1;
+
+// ============================================================
+// REPORTE FINAL RESUMEN
+// ============================================================
+reporte("========================================");
+reporte("RESUMEN NACIONAL DE MONITOREO CLIMATICO");
+reporte("========================================");
+reporte("Estaciones procesadas: " + estaciones_procesadas);
+reporte("Total de alertas: " + total_alertas);
+
+mientras CONTADOR < CICLOS hacer
+    reporte("Ciclo de procesamiento Nro: " + CONTADOR);
+    CONTADOR = CONTADOR + 1;
+fin
+
+reporte("Resumen global del sistema");
+
+si hay_emergencia == verdadero entonces
+    reporte("ESTADO NACIONAL: EMERGENCIA CLIMATICA ACTIVA");
+    reporte("Se recomienda activar protocolos de contingencia");
+    reporte("Central de monitoreo en alerta permanente");
+fin
+
+reporte("Fin del reporte nacional");
+reporte("Sistema de monitoreo finalizado");

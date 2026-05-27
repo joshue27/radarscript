@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.venv/
+.ruff_cache/
+
+# Build artifacts
+build/
+dist/
+*.spec
+*.obj
+
+# Output
+output/
+
+# Pi runtime state
+.atl/
+.pi/
+.pi-lens/
+
+# OS junk
+Thumbs.db
+.DS_Store
+nul
